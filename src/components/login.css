@@ -1,0 +1,51 @@
+* {
+    box-sizing: border-box;
+}
+
+.form-container {
+    padding-bottom: 1rem;
+    margin: 0 4rem;
+}
+
+.form-container label {
+    text-align: left;
+    font-size: 14px;
+    font-weight: 600;
+    display: block;
+    padding: 10px 0 3px 0;
+}
+
+.form-container input {
+    width: 100%;
+    padding: 10px;
+    border: unset;
+    border-radius:3px;
+    outline-color: rgb(84 105 212 / 0.5);
+    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+                rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+                rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+                rgba(60, 66, 87, 0.16) 0px 0px 0px 1px, 
+                rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+                rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+                rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+}
+
+.form-container form div:last-child {
+    padding-top: 19px
+}
+
+.heading {
+    font-size: 23px;
+    text-align: center;
+    color: white;
+}
+
+.auth-signin-btn {
+    display: flex;
+    justify-content: space-between;
+}
+
+.swich-sign-tab a {
+    color: blue;
+    cursor: pointer;
+}
