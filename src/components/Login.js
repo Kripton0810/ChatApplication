@@ -7,10 +7,6 @@ import { auth, storage } from '../firebase';
 import firebase from 'firebase/compat/app';
 import './login.css';
 
-///
-import { signInWithPopup, FacebookAuthProvider } from 'firebase/auth';
-///
-
 /**
  * Login page with google and facebook auth provider buttons
  */
@@ -28,12 +24,11 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     createUserWithEmailAndPassword(auth, email, password)
     .then(({userCredential}) => {
       // Signed in 
       setUser(userCredential.user);
-
+      
       const storageRef = ref(storage, email);
 
       const uploadTask = uploadBytesResumable(storageRef, avatar);
@@ -51,8 +46,10 @@ const Login = () => {
         () => {
           // Handle successful uploads on complete
           // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+
           getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
             await updateProfile(user, {
+              displayName: user.name,
               photoURL: downloadURL
             })
           });
@@ -79,16 +76,6 @@ const Login = () => {
     setAvatar('');
   }
 
-  const fbSignInHandler = () => {
-    const provider = new FacebookAuthProvider();
-    signInWithPopup(auth, provider)
-    .then((re) => {
-      console.log(re);
-    })
-    .catch((err) => {
-      console.log(err.message);
-    })
-  }
   return (
     <div id='login-page'>
       <div className='heading'>
@@ -152,12 +139,8 @@ const Login = () => {
 
             <div 
               className='login-button facebook'
-              onClick={fbSignInHandler}
-            >
-            {/* <div 
-              className='login-button facebook'
               onClick={() => auth.signInWithRedirect(new firebase.auth.FacebookAuthProvider())}
-            > */}
+            >
               <FacebookOutlined /> Facebook
             </div>
           </div>

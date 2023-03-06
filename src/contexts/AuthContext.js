@@ -19,11 +19,8 @@ export const AuthProvider = ({ children }) => {
             setUser(user); //set user/new user
             setLoading(false); //stop loading
             if(user) {
-                console.log('Success!');
                 history.push('/chats'); //renavigate to chats page
-            } else {
-                console.log('NO Success!');
-            }
+            } 
         })
     }, [user, history]); //happens after page renders or user/history value changes
 
@@ -31,6 +28,7 @@ export const AuthProvider = ({ children }) => {
     const value = { user };
 
     return (
+        // passing user as the value
         <AuthContext.Provider value={value}>
             {/* if not loading then show the children */}
             {!loading && children} 
