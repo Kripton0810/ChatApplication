@@ -168,12 +168,16 @@ const Login = () => {
           {account ? (
             <span>
               You do have an account?{" "}
-              <a onClick={() => setAccount(false)}>Login</a>
+              <a href="#" onClick={() => setAccount(false)}>
+                Login
+              </a>
             </span>
           ) : (
             <span>
               You don't have an account?{" "}
-              <a onClick={() => setAccount(true)}>Register</a>
+              <a href="#" onClick={() => setAccount(true)}>
+                Register
+              </a>
             </span>
           )}
         </div>
