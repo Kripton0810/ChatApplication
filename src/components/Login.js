@@ -69,13 +69,6 @@ const Login = () => {
       });
   };
 
-  const reset = () => {
-    setName("");
-    setEmail("");
-    setPassword("");
-    setAvatar("");
-  };
-
   return (
     <div id="login-page">
       <div className="heading">
