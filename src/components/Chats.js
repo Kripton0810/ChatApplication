@@ -30,26 +30,26 @@ const Chats = () => {
       return;
     }
 
-    /**
-     * getting the already created user
-     * if we have one we can immediately show the chat of that specific user
-     */
-    axios
-      .get("https://api.chatengine.io/users/me", {
-        headers: {
-          "project-id": "a2639f4a-0906-4ce1-b4be-965f13d279db",
-          "user-name": user.email,
-          "user-secret": user.uid,
-        },
-      })
-      .then(() => {
-        setLoading(false); //SAFE POINT 1
-      })
-      .catch(() => {
-        let formdata = new FormData();
-        formdata.append("email", user.email);
-        formdata.append("username", user.email);
-        formdata.append("secret", user.uid);
+        /**
+         * getting the already created user
+         * if we have one we can immediately show the chat of that specific user
+         */
+        axios.get('https://api.chatengine.io/users/me', {
+            headers: {
+                'project-id': 'a2639f4a-0906-4ce1-b4be-965f13d279db',
+                'user-name' : user.email,
+                'user-secret' : USER_SECRET
+            }
+        })
+        .then(() => {
+            setLoading(false); //SAFE POINT 1
+        })
+        .catch(() => {
+            let formdata = new FormData();
+            formdata.append('email', user.email);
+            //formdata.append('username', user.email);
+            formdata.append('username', user.displayName);
+            formdata.append('secret', USER_SECRET);
 
         getFile(user.photoURL)
           .then((avatar) => {
